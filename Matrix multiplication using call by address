@@ -1,0 +1,33 @@
+#include <stdio.h>
+// matrix multiplication of 2x2x2 
+void matrix_Multiplication(int (*matrix1)[2][2],int (*matrix2)[2][2],int (*result)[2][2],int depth){
+	int a,b,c,d;
+    for(a=0;a<2;a++){
+    	for(b=0;b<2;b++){
+    		for(c=0;c<2;c++){
+    			for(d=0;d<2;d++){
+    				result[a][b][c]+=matrix1[a][b][d]*matrix2[a][d][c];
+				}
+			}
+		}
+	}
+}
+int main(){
+	int matrix1[2][2][2] = {{{1, 1}, {1, 1}}, {{1, 1}, {1, 1}}};
+    int matrix2[2][2][2] = {{{1, 1}, {1, 1}}, {{1, 1}, {1, 1}}};
+	int result[2][2][2]= {{{0}}};
+	matrix_Multiplication(matrix1,matrix2,result,2);
+	
+	// printing the matrix
+	int i,j,k;
+	 for (i = 0; i < 2; i++) {
+        for (j = 0; j < 2; j++) {
+            for ( k = 0; k < 2; k++) {
+                printf("%d ", result[i][j][k]); // Print each element
+            }
+            printf("\n"); // Newline for next row
+        }
+        printf("\n"); // Newline for next 2D slice
+    }
+
+}
